@@ -14,14 +14,14 @@ import tkinter as tk
 def update_m64p(root2: tk.Tk, var2: tk.StringVar) -> None:
     var2.set("Determining latest release")
     resp = requests.get(
-        'https://api.github.com/repos/loganmc10/m64p/releases/latest')
+        'https://api.github.com/repos/anonymous7002/sneed64/releases/latest')
     if resp.status_code != 200:
         root2.quit()
         return
     for item in resp.json()['assets']:
-        if sys.platform.startswith('win') and 'm64p-win64' in item['name']:
+        if sys.platform.startswith('win') and 'sneed64-win64' in item['name']:
             m64p_url = item['browser_download_url']
-        elif sys.platform.startswith('lin') and 'm64p-linux64' in item['name']:
+        elif sys.platform.startswith('lin') and 'sneed64-linux64' in item['name']:
             m64p_url = item['browser_download_url']
 
     var2.set("Downloading latest release")
